@@ -1,3 +1,4 @@
 supertab.vmb: call delete('/home/esam/.vim/doc/supertab.txt')|call delete('/home/esam/.vim/plugin/supertab.vim')
 supertab.vmb: call delete('/home/esam/.vim/doc/supertab.txt')|call delete('/home/esam/.vim/plugin/supertab.vim')
 supertab.vmb: call delete('/home/esam/.vim/doc/supertab.txt')|call delete('/home/esam/.vim/plugin/supertab.vim')
+histwin-0.24.vba: call delete('/home/esam/.vim/plugin/histwinPlugin.vim')|call delete('/home/esam/.vim/autoload/histwin.vim')|call delete('/home/esam/.vim/doc/histwin.txt')

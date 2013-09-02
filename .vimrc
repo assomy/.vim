@@ -276,9 +276,6 @@ let g:ctrlp_working_path_mode = 0
 let g:ctrlp_dotfiles = 0
 let g:ctrlp_switch_buffer = 0
 nmap ; :CtrlPBuffer<CR>
-
-
-
 nnoremap j gj
 nnoremap k gk
 map <C-b> <Esc>:CtrlPBuffer<CR>
@@ -292,5 +289,8 @@ let g:ctrlp_working_path_mode = 'ra'
 set wildignore+=*/tmp/*,*.so,*.swp,*.zip     " Linux/MacOSX
 set wildignore+=*\\tmp\\*,*.swp,*.zip,*.exe  " Windows
 set autochdir
-
 inoremap <TAB> <c-x><c-o>
+nnoremap <C-J> <C-W>j<C-W><C-_>
+se ff=unix
+nnoremap <C-K> <C-W>k<C-W><C-_>
+
