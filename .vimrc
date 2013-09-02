@@ -293,3 +293,4 @@ set wildignore+=*/tmp/*,*.so,*.swp,*.zip     " Linux/MacOSX
 set wildignore+=*\\tmp\\*,*.swp,*.zip,*.exe  " Windows
 set autochdir
 
+inoremap <TAB> <c-x><c-o>
