@@ -3,7 +3,6 @@ set nocompatible
 " Better copy & paste
 " set pastetoggle=<F2>
 " set clipboard=unnamedplus
-
 " Mouse and backspace
 set mouse=a     " on OSX press ALT and click
 set bs=2        " make backspace behave like normal again
@@ -297,3 +296,4 @@ set undofile                " Save undo's after file closes
 set undodir=~/.vim/undo " where to save undo histories
 set undolevels=1000         " How many undos
 set undoreload=10000        " number of lines to save for undo
+" end of Esam config
