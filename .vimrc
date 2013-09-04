@@ -296,5 +296,9 @@ set undofile                " Save undo's after file closes
 set undodir=~/.vim/undo " where to save undo histories
 set undolevels=1000         " How many undos
 set undoreload=10000        " number of lines to save for undo
+vmap <C-c> "+yi
+vmap <C-x> "+c
+vmap <C-v> c<ESC>"+p
+imap <C-v> <ESC>"+pa
 " end of Esam config
 " from desktop office
