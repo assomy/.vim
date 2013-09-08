@@ -243,7 +243,7 @@ nnoremap <C-J> <C-W>j<C-W><C-_>
 se ff=unix
 nnoremap <C-K> <C-W>k<C-W><C-_>
 set undofile                " Save undo's after file closes
-set undodir=~/.vim/undo " where to save undo histories
+set undodir=~/.vimundo " where to save undo histories
 set undolevels=1000         " How many undos
 set undoreload=10000        " number of lines to save for undo
 vmap <C-c> "+yi
