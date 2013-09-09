@@ -237,7 +237,6 @@ let g:ctrlp_cmd = 'CtrlP'
 let g:ctrlp_working_path_mode = 'ra'
 set wildignore+=*/tmp/*,*.so,*.swp,*.zip     " Linux/MacOSX
 set wildignore+=*\\tmp\\*,*.swp,*.zip,*.exe  " Windows
-set autochdir
 inoremap <TAB> <c-x><c-o>
 nnoremap <C-J> <C-W>j<C-W><C-_>
 se ff=unix
@@ -258,5 +257,11 @@ set makeprg=php\ -l\ %
 set errorformat=%m\ in\ %f\ on\ line\ %l
 let Tlist_Ctags_Cmd = "/usr/bin/ctags"
 let Tlist_WinWidth = 50
+  if has("autocmd") && exists("+omnifunc")
+autocmd Filetype *
+    \	if &omnifunc == "" |
+    \	 setlocal omnifunc=syntaxcomplete#Complete |
+    \	endif
+    endif
 " end of Esam config
 " from desktop office
