@@ -263,7 +263,8 @@ autocmd Filetype *
     \	 setlocal omnifunc=syntaxcomplete#Complete |
     \	endif
     endif
-autocmd BufReadPost * tab ball
+set relativenumber
+"autocmd BufReadPost * tab ball
 
 " end of Esam config
 " from desktop office
