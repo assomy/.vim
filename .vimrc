@@ -360,3 +360,12 @@ let g:rbpt_colorpairs = [
     \ ]
 let g:rbpt_max = 16
 let g:rbpt_loadcmd_toggle = 0
+nnoremap <leader>y :YRShow<CR>
+au FocusLost * :wa ""auto save on lossing foucs
+cmap qq qa!
+cmap WQ wq
+cmap Wq wq
+cmap W w
+cmap Q q
+set list
+set listchars=tab:▸\
