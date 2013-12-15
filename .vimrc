@@ -215,8 +215,8 @@ behave mswin
 let g:pydiction_location = '/home/esam/.vim/bundle/pydiction/complete-dict'
 autocmd FileType php set omnifunc=phpcomplete#CompletePHP
 set omnifunc=syntaxcomplete#Complete
-inoremap <TAB> <C-X><C-O>
-let g:SuperTabDefaultCompletionType = "<C-X><C-O>"
+"inoremap <TAB> <C-X><C-O>
+"let g:SuperTabDefaultCompletionType = "<C-X><C-O>"
 let g:ctrlp_map = '<Leader>t'
 let g:ctrlp_match_window_bottom = 0
 let g:ctrlp_match_window_reversed = 0
@@ -224,7 +224,6 @@ let g:ctrlp_custom_ignore = '\v\~$|\.(o|swp|pyc|wav|mp3|ogg|blend)$|(^|[/\\])\.(
 let g:ctrlp_working_path_mode = 0
 let g:ctrlp_dotfiles = 0
 let g:ctrlp_switch_buffer = 0
-nmap ; :CtrlPBuffer<CR>
 nnoremap j gj
 nnoremap k gk
 map <C-b> <Esc>:CtrlPBuffer<CR>
@@ -237,7 +236,7 @@ let g:ctrlp_cmd = 'CtrlP'
 let g:ctrlp_working_path_mode = 'ra'
 set wildignore+=*/tmp/*,*.so,*.swp,*.zip     " Linux/MacOSX
 set wildignore+=*\\tmp\\*,*.swp,*.zip,*.exe  " Windows
-inoremap <TAB> <c-x><c-o>
+"inoremap <TAB> <c-x><c-o>
 nnoremap <C-J> <C-W>j<C-W><C-_>
 se ff=unix
 nnoremap <C-K> <C-W>k<C-W><C-_>
@@ -268,4 +267,73 @@ set relativenumber
 
 " end of Esam config
 " from desktop office
+
+highlight Cursor guibg=orange
+highlight Cursor guifg=black
+noremap <Up> <NOP>
+noremap <Down> <NOP>
+noremap <Left> <NOP>
+noremap <Right> <NOP>
+
+set switchbuf=usetab
+inoremap jj <Esc>
+set hidden
+set autoindent    " always set autoindenting on
+set incsearch     " show search matches as you type
+nnoremap ; :
+nmap <silent> ,/ :nohlsearch<CR> " clear seach
+cmap w!! w !sudo tee % >/dev/null " sudo
+
+let g:EasyMotion_mapping_f = '<M-f>'
+let g:EasyMotion_leader_key = '<Leader>'
+imap æ <ESC><M-f>
+
+
+" Move around splits with <c-hjkl>
+nnoremap <c-j> <c-w>j
+nnoremap <c-k> <c-w>k
+nnoremap <c-h> <c-w>h
+noremap <c-l> <c-w>l
+"move between buffers
+nnoremap <leader><leader> <c-^>
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" MULTIPURPOSE TAB KEY
+" Indent if we're at the beginning of a line. Else, do completion.
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+function! InsertTabWrapper()
+    let col = col('.') - 1
+    if !col || getline('.')[col - 1] !~ '\k'
+        return "\<tab>"
+    else
+        return "\<c-p>"
+    endif
+endfunction
+inoremap <tab> <c-r>=InsertTabWrapper()<cr>
+inoremap <s-tab> <c-n>
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" EXTRACT VARIABLE (SKETCHY)
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+function! ExtractVariable()
+    let name = input("Variable name: ")
+    if name == ''
+        return
+    endif
+    " Enter visual mode (not sure why this is needed since we're already in
+    " visual mode anyway)
+    normal! gv
+
+    " Replace selected text with the variable name
+    exec "normal c" . name
+    " Define the variable on the line above
+    exec "normal! O" . name . " = "
+    " Paste the original selected text to be the variable value
+    normal! $p
+endfunction
+vnoremap <leader>rv :call ExtractVariable()<cr>
+" Vimux
+map <silent> <LocalLeader>rl :wa<CR> :VimuxRunLastCommand<CR>
+map <silent> <LocalLeader>vi :wa<CR> :VimuxInspectRunner<CR>
+map <silent> <LocalLeader>vk :wa<CR> :VimuxInterruptRunner<CR>
+map <silent> <LocalLeader>vx :wa<CR> :VimuxClosePanes<CR>
+map <silent> <LocalLeader>vp :VimuxPromptCommand<CR>
 
