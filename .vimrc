@@ -199,8 +199,12 @@ let Tlist_Use_Right_Window=1
 " sort tag names by name not by the order
 " let Tlist_Sort_Type = "name"
 " }}}
-imap <C-b> <Esc>:CtrlPBuffer<CR>
-map <C-b> <Esc>:CtrlPBuffer<CR>
+imap <C-b> <Esc><Leader>lb
+map <C-b> <Esc><Leader>lb
+map <C-p> <Esc><Leader>lr
+imap <C-p> <Esc><Leader>lr
+map <C-g> <Esc><Leader>lg
+imap <C-g> <Esc><Leader>lg
 set nocompatible               " be iMproved
 set rtp+=~/.vim/bundle/vundle/
 call vundle#rc()
@@ -226,7 +230,6 @@ let g:ctrlp_dotfiles = 0
 let g:ctrlp_switch_buffer = 0
 nnoremap j gj
 nnoremap k gk
-map <C-b> <Esc>:CtrlPBuffer<CR>
 colorscheme aldmeris
 autocmd BufWritePre * :%s/\s\+$//e
 nnoremap <CR> :noh<CR><CR>
@@ -249,7 +252,7 @@ vmap <C-x> "+c
 vmap <C-v> c<ESC>"+p
 imap <C-v> <ESC>"+pa
 set showcmd
-set scrolloff=10
+set scrolloff=3
 set updatecount=50
 set showmatch matchtime=3
 set makeprg=php\ -l\ %
@@ -270,10 +273,7 @@ set relativenumber
 
 highlight Cursor guibg=orange
 highlight Cursor guifg=black
-noremap <Up> <NOP>
-noremap <Down> <NOP>
-noremap <Left> <NOP>
-noremap <Right> <NOP>
+
 
 set switchbuf=usetab
 inoremap jj <Esc>
@@ -342,12 +342,12 @@ au Syntax * RainbowParenthesesLoadSquare
 au Syntax * RainbowParenthesesLoadBraces
 let g:rbpt_colorpairs = [
     \ ['brown',       'RoyalBlue3'],
+    \ ['red',         'firebrick3'],
     \ ['Darkblue',    'SeaGreen3'],
     \ ['darkgray',    'DarkOrchid3'],
     \ ['darkgreen',   'firebrick3'],
     \ ['darkcyan',    'RoyalBlue3'],
     \ ['darkred',     'SeaGreen3'],
-    \ ['darkmagenta', 'DarkOrchid3'],
     \ ['brown',       'firebrick3'],
     \ ['gray',        'RoyalBlue3'],
     \ ['black',       'SeaGreen3'],
@@ -356,7 +356,8 @@ let g:rbpt_colorpairs = [
     \ ['darkgreen',   'RoyalBlue3'],
     \ ['darkcyan',    'SeaGreen3'],
     \ ['darkred',     'DarkOrchid3'],
-    \ ['red',         'firebrick3'],
+    \ ['darkmagenta', 'DarkOrchid3'],
+    \ ['gray',        'RoyalBlue3'],
     \ ]
 let g:rbpt_max = 16
 let g:rbpt_loadcmd_toggle = 0
@@ -369,3 +370,34 @@ cmap W w
 cmap Q q
 set list
 set listchars=tab:▸\
+" Forward/back one file...
+nmap <DOWN> :next<CR>0
+nmap <UP>   :prev<CR>0
+nmap <silent> <RIGHT>         :cnext<CR>
+nmap <silent> <RIGHT><RIGHT>  :cnf<CR><C-G>
+nmap <silent> <LEFT>          :cprev<CR>
+nmap <silent> <LEFT><LEFT>    :cpf<CR><C-G>
+set switchbuf=useopen
+" use emacs-style tab completion when selecting files, etc
+set wildmode=longest,list
+" make tab completion for files/buffers act like bash
+set wildmenu
+map <C-p> :LustyFilesystemExplorerFromHere
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" RemoveFancyCharacters COMMAND
+" Remove smart quotes, etc.
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+function! RemoveFancyCharacters()
+    let typo = {}
+    let typo["“"] = '"'
+    let typo["”"] = '"'
+    let typo["‘"] = "'"
+    let typo["’"] = "'"
+    let typo["–"] = '--'
+    let typo["—"] = '---'
+    let typo["…"] = '...'
+    :exe ":%s/".join(keys(typo), '\|').'/\=typo[submatch(0)]/ge'
+endfunction
+command! RemoveFancyCharacters :call RemoveFancyCharacters()
+
