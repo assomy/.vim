@@ -341,12 +341,10 @@ au Syntax * RainbowParenthesesLoadRound
 au Syntax * RainbowParenthesesLoadSquare
 au Syntax * RainbowParenthesesLoadBraces
 let g:rbpt_colorpairs = [
-    \ ['brown',       'RoyalBlue3'],
     \ ['red',         'firebrick3'],
     \ ['Darkblue',    'SeaGreen3'],
     \ ['darkgray',    'DarkOrchid3'],
     \ ['darkgreen',   'firebrick3'],
-    \ ['darkcyan',    'RoyalBlue3'],
     \ ['darkred',     'SeaGreen3'],
     \ ['brown',       'firebrick3'],
     \ ['gray',        'RoyalBlue3'],
@@ -358,6 +356,8 @@ let g:rbpt_colorpairs = [
     \ ['darkred',     'DarkOrchid3'],
     \ ['darkmagenta', 'DarkOrchid3'],
     \ ['gray',        'RoyalBlue3'],
+    \ ['brown',       'RoyalBlue3'],
+    \ ['darkcyan',    'RoyalBlue3'],
     \ ]
 let g:rbpt_max = 16
 let g:rbpt_loadcmd_toggle = 0
