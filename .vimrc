@@ -38,8 +38,6 @@ map <Leader>m <esc>:tabnext<CR>
 vnoremap <Leader>s :sort<CR>
 " Show whitespace
 " MUST be inserted BEFORE the colorscheme comm
-autocmd ColorScheme * highlight ExtraWhitespace ctermbg=red guibg=red
-au InsertLeave * match ExtraWhitespace /\s\+$/
 " Color schmeme
 " mkdir -p ~/.vim/colors && cd ~/.vim/colors
 " wget -O wombat256mod.vim http://www.vim.org/scripts/download_script.php?src_id=13400
@@ -400,4 +398,5 @@ function! RemoveFancyCharacters()
     :exe ":%s/".join(keys(typo), '\|').'/\=typo[submatch(0)]/ge'
 endfunction
 command! RemoveFancyCharacters :call RemoveFancyCharacters()
-
+"remove white space
+autocmd BufWritePre * :%s/\s\+$//e
