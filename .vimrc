@@ -275,6 +275,7 @@ highlight Cursor guifg=black
 
 set switchbuf=usetab
 inoremap jj <Esc>
+inoremap bb <Esc>:bd<CR>
 set hidden
 set autoindent    " always set autoindenting on
 set incsearch     " show search matches as you type
@@ -361,7 +362,7 @@ let g:rbpt_max = 16
 let g:rbpt_loadcmd_toggle = 0
 nnoremap <leader>y :YRShow<CR>
 au FocusLost * :wa ""auto save on lossing foucs
-cmap qq qa!
+cmap qq qa!<CR>
 cmap WQ wq
 cmap Wq wq
 cmap W w
