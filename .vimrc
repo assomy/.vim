@@ -199,8 +199,8 @@ let Tlist_Use_Right_Window=1
 " }}}
 imap <C-b> <Esc><Leader>lb
 map <C-b> <Esc><Leader>lb
-map <C-p> <Esc><Leader>lr
-imap <C-p> <Esc><Leader>lr
+map <M-g> <Esc><Leader>lr
+imap <M-g> <Esc><Leader>lr
 map <C-g> <Esc><Leader>lg
 imap <C-g> <Esc><Leader>lg
 set nocompatible               " be iMproved
@@ -218,7 +218,6 @@ let g:pydiction_location = '/home/esam/.vim/bundle/pydiction/complete-dict'
 autocmd FileType php set omnifunc=phpcomplete#CompletePHP
 set omnifunc=syntaxcomplete#Complete
 "inoremap <TAB> <C-X><C-O>
-"let g:SuperTabDefaultCompletionType = "<C-X><C-O>"
 let g:ctrlp_map = '<Leader>t'
 let g:ctrlp_match_window_bottom = 0
 let g:ctrlp_match_window_reversed = 0
@@ -304,7 +303,7 @@ function! InsertTabWrapper()
     if !col || getline('.')[col - 1] !~ '\k'
         return "\<tab>"
     else
-        return "\<c-p>"
+        return "\<c-x><c-o>"
     endif
 endfunction
 inoremap <tab> <c-r>=InsertTabWrapper()<cr>
@@ -381,7 +380,7 @@ set switchbuf=useopen
 set wildmode=longest,list
 " make tab completion for files/buffers act like bash
 set wildmenu
-map <C-p> :LustyFilesystemExplorerFromHere
+inoremap <M-o> :LustyFilesystemExplorerFromHere
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " RemoveFancyCharacters COMMAND
@@ -404,3 +403,4 @@ autocmd BufWritePre * :%s/\s\+$//e
 "indentline
 let g:indentLine_color_gui = '#CC9900'
 let g:indentLine_char = '┆'
+"this is my new file<c-o>
