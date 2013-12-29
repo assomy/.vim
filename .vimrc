@@ -274,6 +274,8 @@ highlight Cursor guifg=black
 
 set switchbuf=usetab
 inoremap jj <Esc>
+inoremap dd <Esc>diwi
+inoremap kk <Esc>
 inoremap bb <Esc>:bd<CR>
 set hidden
 set autoindent    " always set autoindenting on
@@ -296,14 +298,14 @@ noremap <c-l> <c-w>l
 nnoremap <leader><leader> <c-^>
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " MULTIPURPOSE TAB KEY
-" Indent if we're at the beginning of a line. Else, do completion.
+" Indent if we're at the beginning of a line. Else, do completion. tw
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 function! InsertTabWrapper()
     let col = col('.') - 1
     if !col || getline('.')[col - 1] !~ '\k'
         return "\<tab>"
     else
-        return "\<c-x><c-o>"
+        return "\<C-x>\<C-p>"
     endif
 endfunction
 inoremap <tab> <c-r>=InsertTabWrapper()<cr>
