@@ -273,9 +273,12 @@ highlight Cursor guifg=black
 
 
 set switchbuf=usetab
-inoremap jj <Esc>
+inoremap jj <Esc>j
+inoremap ll <Esc>l
+inoremap hh <Esc>h
+inoremap ww <Esc>w
 inoremap dd <Esc>diwi
-inoremap kk <Esc>
+inoremap kk <Esc>k
 inoremap bb <Esc>:bd<CR>
 set hidden
 set autoindent    " always set autoindenting on
