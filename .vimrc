@@ -20,6 +20,7 @@ inoremap <C-n> :nohl<CR>
 " Quick quit command
 noremap <Leader>e :quit<CR>     " Quit current window
 noremap <Leader>E :qa!<CR>      " Quit all windows
+noremap <Leader>q :bd!<CR>      " Quit buffer
 " Quick saveing
 noremap <Leader>w :w!<CR>
 " Easier moving of code blocks
@@ -227,7 +228,7 @@ let g:ctrlp_dotfiles = 0
 let g:ctrlp_switch_buffer = 0
 nnoremap j gj
 nnoremap k gk
-colorscheme aldmeris
+colorscheme obsidian2
 autocmd BufWritePre * :%s/\s\+$//e
 nnoremap <CR> :noh<CR><CR>
 set list listchars=tab:→\ ,trail:·
@@ -252,7 +253,6 @@ set showcmd
 set scrolloff=3
 set updatecount=50
 set showmatch matchtime=3
-set makeprg=php\ -l\ %
 set errorformat=%m\ in\ %f\ on\ line\ %l
 let Tlist_Ctags_Cmd = "/usr/bin/ctags"
 let Tlist_WinWidth = 50
@@ -274,7 +274,7 @@ highlight Cursor guifg=black
 
 set switchbuf=usetab
 inoremap jj <Esc>j
-inoremap ll <Esc>l
+inoremap lll <Esc>l
 inoremap hh <Esc>h
 inoremap ww <Esc>w
 inoremap dw <Esc>diwi
@@ -409,3 +409,7 @@ autocmd BufWritePre * :%s/\s\+$//e
 let g:indentLine_color_gui = '#CC9900'
 let g:indentLine_char = '┆'
 "this is my new file<c-o>
+" enter current dir of file
+set autochdir
+autocmd BufNewFile,BufRead *.php set makeprg=php\ -l\ %
+autocmd BufNewFile,BufRead *.py set makeprg=python\  %
