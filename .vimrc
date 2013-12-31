@@ -227,7 +227,7 @@ let g:ctrlp_dotfiles = 0
 let g:ctrlp_switch_buffer = 0
 nnoremap j gj
 nnoremap k gk
-colorscheme aldmeris
+colorscheme obsidian2
 autocmd BufWritePre * :%s/\s\+$//e
 nnoremap <CR> :noh<CR><CR>
 set list listchars=tab:→\ ,trail:·
@@ -274,7 +274,7 @@ highlight Cursor guifg=black
 
 set switchbuf=usetab
 inoremap jj <Esc>j
-inoremap ll <Esc>l
+inoremap lll <Esc>l
 inoremap hh <Esc>h
 inoremap ww <Esc>w
 inoremap dw <Esc>diwi
@@ -409,3 +409,5 @@ autocmd BufWritePre * :%s/\s\+$//e
 let g:indentLine_color_gui = '#CC9900'
 let g:indentLine_char = '┆'
 "this is my new file<c-o>
+" enter current dir of file
+set autochdir
