@@ -20,6 +20,7 @@ inoremap <C-n> :nohl<CR>
 " Quick quit command
 noremap <Leader>e :quit<CR>     " Quit current window
 noremap <Leader>E :qa!<CR>      " Quit all windows
+noremap <Leader>q :bd!<CR>      " Quit buffer
 " Quick saveing
 noremap <Leader>w :w!<CR>
 " Easier moving of code blocks
@@ -252,7 +253,6 @@ set showcmd
 set scrolloff=3
 set updatecount=50
 set showmatch matchtime=3
-set makeprg=php\ -l\ %
 set errorformat=%m\ in\ %f\ on\ line\ %l
 let Tlist_Ctags_Cmd = "/usr/bin/ctags"
 let Tlist_WinWidth = 50
@@ -411,3 +411,5 @@ let g:indentLine_char = '┆'
 "this is my new file<c-o>
 " enter current dir of file
 set autochdir
+autocmd BufNewFile,BufRead *.php set makeprg=php\ -l\ %
+autocmd BufNewFile,BufRead *.py set makeprg=python\  %
