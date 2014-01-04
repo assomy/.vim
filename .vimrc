@@ -1,7 +1,6 @@
 set nocompatible
 " Better copy & paste
 " set pastetoggle=<F2>
-" set clipboard=unnamedplus
 " Mouse and backspace
 set mouse=a     " on OSX press ALT and click
 set bs=2        " make backspace behave like normal again
@@ -43,7 +42,6 @@ vnoremap <Leader>s :sort<CR>
 " mkdir -p ~/.vim/colors && cd ~/.vim/colors
 " wget -O wombat256mod.vim http://www.vim.org/scripts/download_script.php?src_id=13400
 set t_Co=256
-color wombat256mod
 if has("gui_running")
     set guioptions-=T
     set guioptions-=m
@@ -253,6 +251,7 @@ set showcmd
 set scrolloff=3
 set updatecount=50
 set showmatch matchtime=3
+set makeprg=php\ -l\ %
 set errorformat=%m\ in\ %f\ on\ line\ %l
 let Tlist_Ctags_Cmd = "/usr/bin/ctags"
 let Tlist_WinWidth = 50
@@ -411,5 +410,9 @@ let g:indentLine_char = '┆'
 "this is my new file<c-o>
 " enter current dir of file
 set autochdir
-autocmd BufNewFile,BufRead *.php set makeprg=php\ -l\ %
-autocmd BufNewFile,BufRead *.py set makeprg=python\  %
+au BufNewFile,BufRead,BufReadPost *.twig set syntax=HTML
+" File opening {{{2
+cnoremap <expr> %%  getcmdtype() == ':' ? fnameescape(expand('%:h')).'/' : '%%'
+xnoremap . :normal .<CR>
+"set clipboard as default
+set clipboard=unnamed,unnamedplus
