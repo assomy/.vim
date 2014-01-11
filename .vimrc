@@ -278,7 +278,7 @@ inoremap hh <Esc>h
 inoremap ww <Esc>w
 inoremap dw <Esc>diwi
 inoremap kk <Esc>k
-inoremap bb <Esc>:bd<CR>
+inoremap bb <Esc>:bd!<CR>
 set hidden
 set autoindent    " always set autoindenting on
 set incsearch     " show search matches as you type
@@ -411,8 +411,58 @@ let g:indentLine_char = '┆'
 " enter current dir of file
 set autochdir
 au BufNewFile,BufRead,BufReadPost *.twig set syntax=HTML
+au BufNewFile,BufRead,BufReadPost *.py set makeprg=python\ %
+autocmd BufRead *.py nmap <F5> :!python %<CR>
 " File opening {{{2
 cnoremap <expr> %%  getcmdtype() == ':' ? fnameescape(expand('%:h')).'/' : '%%'
 xnoremap . :normal .<CR>
 "set clipboard as default
 set clipboard=unnamed,unnamedplus
+" Fast saving
+nmap <leader>w :w!<cr>
+"ignore compiled files
+set wildignore=*.o,*~,*.pyc
+set encoding=utf8
+" 1 tab == 4 spaces
+set shiftwidth=4
+set tabstop=4
+
+" Linebreak on 500 characters
+set lbr
+set tw=500
+
+set ai "Auto indent
+set si "Smart indent
+set wrap "Wrap lines
+" Map <Space> to / (search) and Ctrl-<Space> to ? (backwards search)
+map <space> /
+map <c-space> ?
+"close all opened buffers
+map <leader>ba :1,1000 bd!<cr>
+"remap 0 to first non blocking characters
+map 0 ^
+map e $
+
+let g:syntastic_enable_signs=1
+let g:syntastic_auto_jump=0
+let g:syntastic_stl_format = '[%E{Err: %fe #%e}%B{, }%W{Warn: %fw #%w}]'
+let g:syntastic_mode_map = { 'mode': 'active',
+                           \ 'active_filetypes': ['python', 'php'],
+                           \ 'passive_filetypes': ['puppet'] }
+let g:syntastic_python_checkers=['flake8']
+
+
+""" Powerline
+"
+hi Search guibg=LightBlue
+highlight ErrorMsg guibg=White guifg=Red
+let g:vim_debug_disable_mappings = 1
+imap AA <Esc>A
+imap oo <Esc>o
+imap OO <Esc>O
+imap aa <Esc>A
+
+map [[ ?{<CR>w99[{
+map ][ /}<CR>b99]}
+map ]] j0[[%/{<CR>
+map [] k$][%?}<CR
