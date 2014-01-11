@@ -453,7 +453,7 @@ let g:syntastic_python_checkers=['flake8']
 
 
 """ Powerline
-"
+
 hi Search guibg=LightBlue
 highlight ErrorMsg guibg=White guifg=Red
 let g:vim_debug_disable_mappings = 1
@@ -466,3 +466,6 @@ map [[ ?{<CR>w99[{
 map ][ /}<CR>b99]}
 map ]] j0[[%/{<CR>
 map [] k$][%?}<CR
+
+let g:Powerline_symbols='unicode'
+
