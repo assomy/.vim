@@ -272,23 +272,33 @@ highlight Cursor guifg=black
 
 
 set switchbuf=usetab
-inoremap jj <Esc>j
-inoremap lll <Esc>l
-inoremap hh <Esc>h
-inoremap ww <Esc>w
-inoremap dw <Esc>diwi
-inoremap kk <Esc>k
-inoremap bb <Esc>:bd!<CR>
+imap ,, <Esc>,,
+imap jj <Esc>j
+imap ii <Esc>I
+imap ii <Esc>I
+imap ff <Esc>,f
+vmap ff  ,f
+imap lll <Esc>l
+imap hh <Esc>h
+imap ww <Esc>w
+imap dw <Esc>ciw
+imap dd <Esc>cc
+imap kk <Esc>k
+imap bb <Esc>:bd!<CR>
+imap qq <Esc>:q!<CR>
+imap AA <Esc>A
+imap ooo <Esc>o
+imap OO <Esc>O
+imap aa <Esc>A
 set hidden
 set autoindent    " always set autoindenting on
 set incsearch     " show search matches as you type
 nnoremap ; :
+nnoremap : ;
 nmap <silent> ,/ :nohlsearch<CR> " clear seach
 cmap w!! w !sudo tee % >/dev/null " sudo
 
-let g:EasyMotion_mapping_f = '<M-f>'
 let g:EasyMotion_leader_key = '<Leader>'
-imap æ <ESC><M-f>
 
 
 " Move around splits with <c-hjkl>
@@ -363,7 +373,6 @@ let g:rbpt_colorpairs = [
     \ ]
 let g:rbpt_max = 16
 let g:rbpt_loadcmd_toggle = 0
-nnoremap <leader>y :YRShow<CR>
 au FocusLost * :wa ""auto save on lossing foucs
 cmap qq qa!<CR>
 cmap WQ wq
@@ -457,10 +466,6 @@ let g:syntastic_python_checkers=['flake8']
 hi Search guibg=LightBlue
 highlight ErrorMsg guibg=White guifg=Red
 let g:vim_debug_disable_mappings = 1
-imap AA <Esc>A
-imap oo <Esc>o
-imap OO <Esc>O
-imap aa <Esc>A
 
 map [[ ?{<CR>w99[{
 map ][ /}<CR>b99]}
@@ -468,4 +473,15 @@ map ]] j0[[%/{<CR>
 map [] k$][%?}<CR
 
 let g:Powerline_symbols='unicode'
+"center
+nmap G Gzz
+nmap n nzz
+nmap N Nzz
+nmap } }zz
+nmap { {zz
+let g:syntastic_enable_signs=1
+let g:syntastic_auto_jump=1
+let g:syntastic_loc_list_height=5
+let g:syntastic_quiet_warnings=1
+let g:syntastic_enable_highlighting = 0
 
