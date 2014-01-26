@@ -115,7 +115,6 @@ set laststatus=2
 " Settings for ctrlp
 " cd ~/.vim/bundle
 " git clone https://github.com/kien/ctrlp.vim.git
-let g:ctrlp_max_hegiht = 30
 set wildignore+=*.pyc
 set wildignore+=build/*
 set wildignore+=*/lib/*
@@ -187,7 +186,6 @@ let Tlist_Inc_Winwidth=1            " increase window by 1 when growing
 " the default ctags in /usr/bin on the Mac is GNU ctags, so change it to the
 " exuberant ctags version in /usr/local/bin
 let Tlist_Ctags_Cmd = '/usr/local/bin/ctags'
-" show function/method prototypes in the list
 let Tlist_Display_Prototype=0
 " don't show scope info
 let Tlist_Display_Tag_Scope=0
@@ -196,12 +194,18 @@ let Tlist_Use_Right_Window=1
 " sort tag names by name not by the order
 " let Tlist_Sort_Type = "name"
 " }}}
-imap <C-b> <Esc><Leader>lb
-map <C-b> <Esc><Leader>lb
-map <M-g> <Esc><Leader>lr
-imap <M-g> <Esc><Leader>lr
-map <C-g> <Esc><Leader>lg
-imap <C-g> <Esc><Leader>lg
+imap <M-d> <Esc><Leader>lb
+map <M-d> <Esc><Leader>lb
+cmap <M-d> <Esc><Leader>lb
+map <M-f> <leader>of
+imap <M-f> <Esc><leader>of
+map <M-g> <Esc><Leader>lg
+imap <M-g> <Esc><Leader>lg
+cmap <M-g> <Esc><Leader>lg
+imap <leader>of <Esc>:CommandT<CR>
+map <leader>of :CommandT<CR>
+vmap <M-f> <Esc><Leader>of
+cmap <M-f> <Esc><Leader>of
 set nocompatible               " be iMproved
 set rtp+=~/.vim/bundle/vundle/
 call vundle#rc()
@@ -217,22 +221,12 @@ let g:pydiction_location = '/home/esam/.vim/bundle/pydiction/complete-dict'
 autocmd FileType php set omnifunc=phpcomplete#CompletePHP
 set omnifunc=syntaxcomplete#Complete
 "inoremap <TAB> <C-X><C-O>
-let g:ctrlp_map = '<Leader>t'
-let g:ctrlp_match_window_bottom = 0
-let g:ctrlp_match_window_reversed = 0
-let g:ctrlp_custom_ignore = '\v\~$|\.(o|swp|pyc|wav|mp3|ogg|blend)$|(^|[/\\])\.(hg|git|bzr)($|[/\\])|__init__\.py'
-let g:ctrlp_working_path_mode = 0
-let g:ctrlp_dotfiles = 0
-let g:ctrlp_switch_buffer = 0
 nnoremap j gj
 nnoremap k gk
 colorscheme obsidian2
 autocmd BufWritePre * :%s/\s\+$//e
 nnoremap <CR> :noh<CR><CR>
 set list listchars=tab:→\ ,trail:·
-let g:ctrlp_map = '<c-p>'
-let g:ctrlp_cmd = 'CtrlP'
-let g:ctrlp_working_path_mode = 'ra'
 set wildignore+=*/tmp/*,*.so,*.swp,*.zip     " Linux/MacOSX
 set wildignore+=*\\tmp\\*,*.swp,*.zip,*.exe  " Windows
 "inoremap <TAB> <c-x><c-o>
@@ -272,6 +266,7 @@ highlight Cursor guifg=black
 
 
 set switchbuf=usetab
+"custom configuratation to insert mode
 imap ,, <Esc>,,
 imap jj <Esc>j
 imap ii <Esc>I
@@ -282,7 +277,7 @@ imap lll <Esc>l
 imap hh <Esc>h
 imap ww <Esc>w
 imap dw <Esc>ciw
-imap dd <Esc>cc
+imap dd <Esc>ddi
 imap kk <Esc>k
 imap bb <Esc>:bd!<CR>
 imap qq <Esc>:q!<CR>
@@ -290,11 +285,12 @@ imap AA <Esc>A
 imap ooo <Esc>o
 imap OO <Esc>O
 imap aa <Esc>A
+imap cc <C-o>
 set hidden
 set autoindent    " always set autoindenting on
 set incsearch     " show search matches as you type
-nnoremap ; :
-nnoremap : ;
+"nnoremap ; :
+"nnoremap : ;
 nmap <silent> ,/ :nohlsearch<CR> " clear seach
 cmap w!! w !sudo tee % >/dev/null " sudo
 
@@ -317,7 +313,7 @@ function! InsertTabWrapper()
     if !col || getline('.')[col - 1] !~ '\k'
         return "\<tab>"
     else
-        return "\<C-x>\<C-p>"
+        return "\<C-x>\<C-n>"
     endif
 endfunction
 inoremap <tab> <c-r>=InsertTabWrapper()<cr>
@@ -393,7 +389,6 @@ set switchbuf=useopen
 set wildmode=longest,list
 " make tab completion for files/buffers act like bash
 set wildmenu
-inoremap <M-o> :LustyFilesystemExplorerFromHere
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " RemoveFancyCharacters COMMAND
@@ -417,8 +412,8 @@ autocmd BufWritePre * :%s/\s\+$//e
 let g:indentLine_color_gui = '#CC9900'
 let g:indentLine_char = '┆'
 "this is my new file<c-o>
-" enter current dir of file
-set autochdir
+" change the current dir to the dir of the file
+"set autochdir
 au BufNewFile,BufRead,BufReadPost *.twig set syntax=HTML
 au BufNewFile,BufRead,BufReadPost *.py set makeprg=python\ %
 autocmd BufRead *.py nmap <F5> :!python %<CR>
