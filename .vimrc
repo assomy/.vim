@@ -282,9 +282,7 @@ imap kk <Esc>k
 imap bb <Esc>:bd!<CR>
 imap qq <Esc>:q!<CR>
 imap AA <Esc>A
-imap ooo <Esc>o
 imap OO <Esc>O
-imap aa <Esc>A
 imap cc <C-o>
 set hidden
 set autoindent    " always set autoindenting on
@@ -479,4 +477,8 @@ let g:syntastic_auto_jump=1
 let g:syntastic_loc_list_height=5
 let g:syntastic_quiet_warnings=1
 let g:syntastic_enable_highlighting = 0
+"enter current dir of file
+imap %% <Esc>:cd %%<CR>
+vmap %% <Esc>:cd %%<CR>
+cmap cdd cd %%<CR>
 
