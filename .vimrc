@@ -284,6 +284,7 @@ imap qq <Esc>:q!<CR>
 imap AA <Esc>A
 imap OO <Esc>O
 imap cc <C-o>
+imap ,p <Esc>"0p
 set hidden
 set autoindent    " always set autoindenting on
 set incsearch     " show search matches as you type
