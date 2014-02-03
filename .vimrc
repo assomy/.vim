@@ -1,3 +1,4 @@
+"export TERM="xterm-256color"
 set nocompatible
 " Better copy & paste
 " set pastetoggle=<F2>
