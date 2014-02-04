@@ -413,7 +413,7 @@ let g:indentLine_color_gui = '#CC9900'
 let g:indentLine_char = '┆'
 "this is my new file<c-o>
 " change the current dir to the dir of the file
-"set autochdir
+set autochdir
 au BufNewFile,BufRead,BufReadPost *.twig set syntax=HTML
 au BufNewFile,BufRead,BufReadPost *.py set makeprg=python\ %
 autocmd BufRead *.py nmap <F5> :!python %<CR>
