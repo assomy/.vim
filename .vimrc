@@ -268,6 +268,7 @@ highlight Cursor guifg=black
 
 set switchbuf=usetab
 "custom configuratation to insert mode
+imap :wq <Esc>:wq
 imap ,, <Esc>,,
 imap jj <Esc>j
 imap ii <Esc>I
