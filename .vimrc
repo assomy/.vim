@@ -216,8 +216,6 @@ call vundle#rc()
 "
 "    " My Bundles here:
 let ropevim_vim_completion=1
-source $VIMRUNTIME/mswin.vim
-behave mswin
 let g:pydiction_location = '/home/esam/.vim/bundle/pydiction/complete-dict'
 autocmd FileType php set omnifunc=phpcomplete#CompletePHP
 set omnifunc=syntaxcomplete#Complete
@@ -268,7 +266,6 @@ highlight Cursor guifg=black
 
 set switchbuf=usetab
 "custom configuratation to insert mode
-imap :wq <Esc>:wq
 imap ,, <Esc>,,
 imap jj <Esc>j
 imap ii <Esc>I
@@ -413,11 +410,16 @@ autocmd BufWritePre * :%s/\s\+$//e
 let g:indentLine_color_gui = '#CC9900'
 let g:indentLine_char = '┆'
 "this is my new file<c-o>
-" change the current dir to the dir of the file
-set autochdir
+" change the current dir opening files
+autocmd BufReadPost *
+            \ if line("'\"") > 0 && line("'\"") <= line("$") |
+            \   exe "normal! g`\"" |
+            \ endif
+
+" Setup Pathogen to manage yourto the dir of the file
+"set autochdir
 au BufNewFile,BufRead,BufReadPost *.twig set syntax=HTML
 au BufNewFile,BufRead,BufReadPost *.py set makeprg=python\ %
-autocmd BufRead *.py nmap <F5> :!python %<CR>
 " File opening {{{2
 cnoremap <expr> %%  getcmdtype() == ':' ? fnameescape(expand('%:h')).'/' : '%%'
 xnoremap . :normal .<CR>
@@ -434,6 +436,7 @@ set tabstop=4
 
 " Linebreak on 500 characters
 set lbr
+
 set tw=500
 
 set ai "Auto indent
@@ -443,45 +446,23 @@ set wrap "Wrap lines
 map <space> /
 map <c-space> ?
 "close all opened buffers
+
 map <leader>ba :1,1000 bd!<cr>
 "remap 0 to first non blocking characters
 map 0 ^
 map e $
-
-let g:syntastic_enable_signs=1
-let g:syntastic_auto_jump=0
-let g:syntastic_stl_format = '[%E{Err: %fe #%e}%B{, }%W{Warn: %fw #%w}]'
-let g:syntastic_mode_map = { 'mode': 'active',
-                           \ 'active_filetypes': ['python', 'php'],
-                           \ 'passive_filetypes': ['puppet'] }
-let g:syntastic_python_checkers=['flake8']
-
-
-""" Powerline
-
 hi Search guibg=LightBlue
 highlight ErrorMsg guibg=White guifg=Red
 let g:vim_debug_disable_mappings = 1
-
 map [[ ?{<CR>w99[{
 map ][ /}<CR>b99]}
 map ]] j0[[%/{<CR>
 map [] k$][%?}<CR
-
 let g:Powerline_symbols='unicode'
 "center
+
 nmap G Gzz
 nmap n nzz
 nmap N Nzz
 nmap } }zz
 nmap { {zz
-let g:syntastic_enable_signs=1
-let g:syntastic_auto_jump=1
-let g:syntastic_loc_list_height=5
-let g:syntastic_quiet_warnings=1
-let g:syntastic_enable_highlighting = 0
-"enter current dir of file
-imap %% <Esc>:cd %%<CR>
-vmap %% <Esc>:cd %%<CR>
-cmap cdd cd %%<CR>
-
