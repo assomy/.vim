@@ -121,6 +121,6 @@ unlet s:undo_ftplugin
 let &cpo = s:cpo_save
 unlet s:cpo_save
 
-map <F5> <Esc>:!python %<CR>
-imap <F5> <Esc>:!python %<CR>
+map <F5> <Esc>:w<CR>:!python %<CR>
+imap <F5> <Esc>:w<CR>:!python %<CR>
 " vim: ts=2 sw=2 et
