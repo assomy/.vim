@@ -90,13 +90,13 @@ if python_ftplugin#misc#option#get('python_syntax_fold', 1)
     syn region  pythonFoldedString start=+[Bb]\=[Rr]\=[Uu]\=\z("""\|'''\)+ end=+.*\z1+ fold transparent contained
           \ containedin=pythonString,pythonUniString,pythonUniRawString,pythonRawString
   endif
-  " Match function and class definitions. 
+  " Match function and class definitions.
   syntax region  pythonFunctionFold
         \ start="^\(\z(\s*\)\)\%(@.*\n\1\)\@<!\%(@.*\n\1\)*\z(\%(def\|class\)\s\+.\{-}$\)"
         \ skip="^\%(\z1\%(@.\{-}\n\z1\)*\z2\|\s*\n\|\s*#\)"
-        \ end="^\ze\%(\%(\z1\s\+\)\@!\|\%$\)" fold transparent 
+        \ end="^\ze\%(\%(\z1\s\+\)\@!\|\%$\)" fold transparent
   " Match comments that span more than one line.
-  syntax region  pythonCommentFold start="^\z(\s*\)#\%(!\|\s*-\*-\)\@!.*$" 
+  syntax region  pythonCommentFold start="^\z(\s*\)#\%(!\|\s*-\*-\)\@!.*$"
         \ end="^\%(\z1\#.*$\)\@!" fold contains=ALLBUT,pythonCommentFold
 endif
 
@@ -121,4 +121,6 @@ unlet s:undo_ftplugin
 let &cpo = s:cpo_save
 unlet s:cpo_save
 
+map <F5> <Esc>:!python %<CR>
+imap <F5> <Esc>:!python %<CR>
 " vim: ts=2 sw=2 et
