@@ -269,7 +269,6 @@ set switchbuf=usetab
 imap ,, <Esc>,,
 imap jj <Esc>j
 imap ii <Esc>I
-imap ii <Esc>I
 imap ff <Esc>,f
 vmap ff  ,f
 imap hh <Esc>h
@@ -278,7 +277,11 @@ imap dd <Esc>ddi
 imap kk <Esc>k
 imap bb <Esc>:bd!<CR>
 imap qq <Esc>:q!<CR>
+<<<<<<< HEAD
 imap cc <C-o>
+=======
+imap uu <C-o>
+>>>>>>> 09238b8af04b672b276484362e5e738ba45b3345
 imap ,p <Esc>"0p
 set hidden
 set autoindent    " always set autoindenting on
@@ -491,8 +494,9 @@ inoremap <C-Tab> <C-O><C-W>w
 cnoremap <C-Tab> <C-C><C-W>w
 onoremap <C-Tab> <C-C><C-W>w
 
+<<<<<<< HEAD
 
-"map ' " 
+"map ' "
 inoremap '' ''<Left>
 inoremap "" ""<Left>
 inoremap () ()<Left>
