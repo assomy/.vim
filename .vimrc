@@ -269,7 +269,7 @@ set switchbuf=usetab
 imap ,, <Esc>,,
 imap jj <Esc>j
 imap ii <Esc>I
-imap ff <Esc>,f
+imap ,f <Esc>,f
 vmap ff  ,f
 imap hh <Esc>h
 imap dw <Esc>ciw
@@ -279,6 +279,7 @@ imap bb <Esc>:bd!<CR>
 imap qq <Esc>:q!<CR>
 imap uu <C-o>
 imap ,p <Esc>"0p
+map ,p <Esc>"0p
 set hidden
 set autoindent    " always set autoindenting on
 set incsearch     " show search matches as you type
