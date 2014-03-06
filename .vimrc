@@ -277,7 +277,11 @@ imap dd <Esc>ddi
 imap kk <Esc>k
 imap bb <Esc>:bd!<CR>
 imap qq <Esc>:q!<CR>
+<<<<<<< HEAD
+imap cc <C-o>
+=======
 imap uu <C-o>
+>>>>>>> 09238b8af04b672b276484362e5e738ba45b3345
 imap ,p <Esc>"0p
 map ,p <Esc>"0p
 set hidden
@@ -491,3 +495,13 @@ inoremap <C-Tab> <C-O><C-W>w
 cnoremap <C-Tab> <C-C><C-W>w
 onoremap <C-Tab> <C-C><C-W>w
 
+<<<<<<< HEAD
+
+"map ' "
+inoremap '' ''<Left>
+inoremap "" ""<Left>
+inoremap () ()<Left>
+inoremap <> <><Left>
+inoremap {} {}<Left>
+inoremap [] []<Left>
+inoremap () ()<Left>
