@@ -203,8 +203,8 @@ imap <M-f> <Esc><leader>of
 map <M-g> <Esc><Leader>lg
 imap <M-g> <Esc><Leader>lg
 cmap <M-g> <Esc><Leader>lg
-imap <leader>of <Esc>:CommandT<CR>
-map <leader>of :CommandT<CR>
+imap <leader>of <Esc>:CommandTFlush<CR>:CommandT<CR>
+map <leader>of :CommandTFlush<CR>:CommandT<CR>
 vmap <M-f> <Esc><Leader>of
 cmap <M-f> <Esc><Leader>of
 set nocompatible               " be iMproved
@@ -272,16 +272,12 @@ imap ii <Esc>I
 imap ii <Esc>I
 imap ff <Esc>,f
 vmap ff  ,f
-imap lll <Esc>l
 imap hh <Esc>h
-imap ww <Esc>w
 imap dw <Esc>ciw
 imap dd <Esc>ddi
 imap kk <Esc>k
 imap bb <Esc>:bd!<CR>
 imap qq <Esc>:q!<CR>
-imap AA <Esc>A
-imap OO <Esc>O
 imap cc <C-o>
 imap ,p <Esc>"0p
 set hidden
@@ -417,7 +413,7 @@ autocmd BufReadPost *
             \ endif
 
 " Setup Pathogen to manage yourto the dir of the file
-"set autochdir
+set autochdir
 au BufNewFile,BufRead,BufReadPost *.twig set syntax=HTML
 au BufNewFile,BufRead,BufReadPost *.py set makeprg=python\ %
 " File opening {{{2
@@ -466,3 +462,41 @@ nmap n nzz
 nmap N Nzz
 nmap } }zz
 nmap { {zz
+"mswin configuratation
+vnoremap <BS> d
+vnoremap <C-C> "+y
+map <C-V>		"+gP
+cmap <C-V>		<C-R>+
+vnoremap <C-X> "+x
+
+" Use CTRL-S for saving, also in Insert mode
+noremap <C-S>		:update<CR>
+vnoremap <C-S>		<C-C>:update<CR>
+inoremap <C-S>		<C-O>:update<CR>
+
+noremap <C-Z> u
+inoremap <C-Z> <C-O>u
+
+" CTRL-A is Select all
+noremap <C-A> gggH<C-O>G
+inoremap <C-A> <C-O>gg<C-O>gH<C-O>G
+cnoremap <C-A> <C-C>gggH<C-O>G
+onoremap <C-A> <C-C>gggH<C-O>G
+snoremap <C-A> <C-C>gggH<C-O>G
+xnoremap <C-A> <C-C>ggVG
+
+" CTRL-Tab is Next window
+noremap <C-Tab> <C-W>w
+inoremap <C-Tab> <C-O><C-W>w
+cnoremap <C-Tab> <C-C><C-W>w
+onoremap <C-Tab> <C-C><C-W>w
+
+
+"map ' " 
+inoremap '' ''<Left>
+inoremap "" ""<Left>
+inoremap () ()<Left>
+inoremap <> <><Left>
+inoremap {} {}<Left>
+inoremap [] []<Left>
+inoremap () ()<Left>
