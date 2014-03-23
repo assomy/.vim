@@ -77,12 +77,6 @@ ConqueTerm_Syntax	conque_term.txt	/*ConqueTerm_Syntax*
 ConqueTerm_TERM	conque_term.txt	/*ConqueTerm_TERM*
 ConqueTerm_ToggleKey	conque_term.txt	/*ConqueTerm_ToggleKey*
 MatchError	matchit.txt	/*MatchError*
-RltvNmbr	RltvNmbr.txt	/*RltvNmbr*
-RltvNmbr-contents	RltvNmbr.txt	/*RltvNmbr-contents*
-RltvNmbr-copyright	RltvNmbr.txt	/*RltvNmbr-copyright*
-RltvNmbr-history	RltvNmbr.txt	/*RltvNmbr-history*
-RltvNmbr-manual	RltvNmbr.txt	/*RltvNmbr-manual*
-RltvNmbr.txt	RltvNmbr.txt	/*RltvNmbr.txt*
 [%	matchit.txt	/*[%*
 ]%	matchit.txt	/*]%*
 b:match_col	matchit.txt	/*b:match_col*
