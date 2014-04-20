@@ -81,7 +81,7 @@ function! python_ftplugin#fold_text() " {{{1
       let lnum += 1
       let line = getline(lnum)
     endwhile
-    
+
     if line =~ '^\s*\(def\|class\)\>'
       " Class or function body.
       let line = python_ftplugin#misc#str#trim(line)
@@ -154,11 +154,6 @@ function! python_ftplugin#syntax_check() " {{{1
         let winnr = winnr()
         call python_ftplugin#misc#msg#info('python.vim %s: Checking Python script syntax ..', g:python_ftplugin#version)
         execute 'silent make!'
-        cwindow
-        if winnr() != winnr
-          let w:quickfix_title = 'Issues reported by ' . progname
-          execute winnr . 'wincmd w'
-        endif
         redraw
         echo ''
       finally
@@ -439,7 +434,7 @@ function! s:do_module_completion(chr) " {{{1
   let complete = s:do_completion_always(chr, line)
   if complete != -1
     return complete
-  
+
   " Complete module names in the first part of a from XX import YY line.
   elseif match(line, '\<from\s*\(\s\+[A-Za-z0-9_.]*\s\@!\)\=$') >= 0
     " When a space is typed after the module name do not complete.
@@ -497,7 +492,7 @@ function! s:do_completion_always(chr, line) " {{{1
   " Do not complete when typing a comment or string literal.
   if !s:syntax_is_code()
     return 0
-  
+                                    e
   " Don't complete after 'self'.
   elseif a:line =~ '\<self$'
     return 0
