@@ -81,6 +81,7 @@ nmap Q gqap
 set history=700
 set undolevels=700
 " Enable syntax highlightling
+"
 filetype off
 filetype plugin indent on
 syntax on
@@ -223,6 +224,7 @@ set omnifunc=syntaxcomplete#Complete
 nnoremap j gj
 nnoremap k gk
 colorscheme obsidian2
+colorscheme molokai
 autocmd BufWritePre * :%s/\s\+$//e
 nnoremap <CR> :noh<CR><CR>
 set list listchars=tab:→\ ,trail:·
@@ -273,15 +275,11 @@ imap ,f <Esc>,f
 vmap ff  ,f
 imap hh <Esc>h
 imap dw <Esc>ciw
-imap dd <Esc>ddi
+imap ddd <Esc>ddi
 imap kk <Esc>k
 imap bb <Esc>:bd!<CR>
 imap qq <Esc>:q!<CR>
-<<<<<<< HEAD
-imap cc <C-o>
-=======
 imap uu <C-o>
->>>>>>> 09238b8af04b672b276484362e5e738ba45b3345
 imap ,p <Esc>"0p
 map ,p <Esc>"0p
 set hidden
@@ -306,15 +304,7 @@ nnoremap <leader><leader> <c-^>
 " MULTIPURPOSE TAB KEY
 " Indent if we're at the beginning of a line. Else, do completion. tw
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-function! InsertTabWrapper()
-    let col = col('.') - 1
-    if !col || getline('.')[col - 1] !~ '\k'
-        return "\<tab>"
-    else
-        return "\<C-x>\<C-n>"
-    endif
-endfunction
-inoremap <tab> <c-r>=InsertTabWrapper()<cr>
+"inoremap <tab> <c-r>=InsertTabWrapper()<cr>
 inoremap <s-tab> <c-n>
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " EXTRACT VARIABLE (SKETCHY)
@@ -417,7 +407,8 @@ autocmd BufReadPost *
             \ endif
 
 " Setup Pathogen to manage yourto the dir of the file
-set autochdir
+"enter folder
+"set autochdir
 au BufNewFile,BufRead,BufReadPost *.twig set syntax=HTML
 au BufNewFile,BufRead,BufReadPost *.py set makeprg=python\ %
 " File opening {{{2
@@ -443,14 +434,14 @@ set ai "Auto indent
 set si "Smart indent
 set wrap "Wrap lines
 " Map <Space> to / (search) and Ctrl-<Space> to ? (backwards search)
-map <space> /
-map <c-space> ?
+map <space> ,f
+map <c-space> ,F
 "close all opened buffers
 
 map <leader>ba :1,1000 bd!<cr>
 "remap 0 to first non blocking characters
 map 0 ^
-map e $
+map E $
 hi Search guibg=LightBlue
 highlight ErrorMsg guibg=White guifg=Red
 let g:vim_debug_disable_mappings = 1
@@ -474,8 +465,8 @@ cmap <C-V>		<C-R>+
 vnoremap <C-X> "+x
 
 " Use CTRL-S for saving, also in Insert mode
-noremap <C-S>		:update<CR>
-vnoremap <C-S>		<C-C>:update<CR>
+noremap <C-S>		:w<CR>
+vnoremap <C-S>		<C-C>:w<CR>
 inoremap <C-S>		<C-O>:update<CR>
 
 noremap <C-Z> u
@@ -494,16 +485,19 @@ noremap <C-Tab> <C-W>w
 inoremap <C-Tab> <C-O><C-W>w
 cnoremap <C-Tab> <C-C><C-W>w
 onoremap <C-Tab> <C-C><C-W>w
+set ve=all
+imap <Esc> <Esc>l
+" Yank text to the OS X clipboard
+noremap <leader>y "*y
+noremap <leader>yy "*Y
+cmap gs  ChromeReloadStart<CR>
+cmap gt  ChromeReloadStop<CR>
+" Trigger configuration. Do not use <tab> if you use https://github.com/Valloric/YouCompleteMe.
+"
 
-<<<<<<< HEAD
+let g:UltiSnipsExpandTrigger="<tab>"
+let g:UltiSnipsJumpForwardTrigger="<tab>"
+let g:UltiSnipsJumpBackwardTrigger="<c-tab>"
 
-"map ' "
-inoremap '' ''<Left>
-inoremap "" ""<Left>
-inoremap () ()<Left>
-inoremap <> <><Left>
-inoremap {} {}<Left>
-inoremap [] []<Left>
-inoremap () ()<Left>
-cmap :gs <Esc> :ChromeReloadStart
-cmap :gt <Esc> :ChromeReloadStop
+" If you want :UltiSnipsEdit to split your window.
+let g:UltiSnipsEditSplit="vertical"
