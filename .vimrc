@@ -505,3 +505,5 @@ inoremap <> <><Left>
 inoremap {} {}<Left>
 inoremap [] []<Left>
 inoremap () ()<Left>
+cmap :gs <Esc> :ChromeReloadStart
+cmap :gt <Esc> :ChromeReloadStop
